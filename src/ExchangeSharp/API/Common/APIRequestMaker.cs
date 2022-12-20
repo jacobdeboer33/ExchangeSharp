@@ -10,6 +10,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,6 +35,7 @@ namespace ExchangeSharp
 		/// You can also set via code if you like
 		/// </summary>
 		private static readonly HttpClientHandler ClientHandler = new HttpClientHandler();
+
 		public static IWebProxy? Proxy
 		{
 			get => ClientHandler.Proxy;
@@ -42,6 +44,7 @@ namespace ExchangeSharp
 				ClientHandler.Proxy = value;
 			}
 		}
+
 		public static readonly HttpClient Client = new HttpClient(ClientHandler);
 
 		/// <summary>
@@ -80,6 +83,7 @@ namespace ExchangeSharp
 					case "content-type":
 						contentType = value;
 						break;
+
 					default:
 						Request.Headers.TryAddWithoutValidation(header, value);
 						break;
@@ -104,7 +108,6 @@ namespace ExchangeSharp
 				get => Timeout;
 				set => Timeout = value;
 			}
-
 
 			public Task WriteAllAsync(byte[] data, int index, int length)
 			{
